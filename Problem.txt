@@ -1,0 +1,32 @@
+In a postfix expression, a binary operator follows its two operands. Here are
+a few examples of infix expressions and their corresponding postfix forms:
+Infix Postfix
+a + b a b +
+(a + b) * c a b + c *
+a + b * c a b c * +
+Notice that the order of the operands a, b and c in an infix expression is the
+same in the corresponding postfix expression. However, the order of the
+operators might change. This order depends on the precedence of the
+operators and the existence of parentheses. As we mentioned, parentheses
+do not appear in a postfix expression.
+
+Figure 1
+Converting the infix expression a + b * c to postfix form
+Next Char Postfix Operator stack
+a        | a      |
++        | a      |+
+b        | a      |b +
+*        | a      |b + *
+c        | a      |b c + *
+a        | b      |c * +
+a        | b      |c * +
+Figure 1.
+Successive operators with the same precedence. What if two successive
+operators have the same precedence ? We need to distinguish between operators
+that have a left-to-right association – namely +, -, * and / - and exponentiation,
+which has a right-to-left association. For example, consider the expression a- b +
+c. When we encounter the +, the stack will contain the operator – and the
+incomplete postfix expression will be ab. The subtraction operator belongs to the
+operands a and b, so we pop the stack and append – to the end of the expression
+ab. Since the stack is empty, we push the + onto the stack. We then append c to
+the result, and finally we pop the stack and append the +. The result is a b – c +. 
