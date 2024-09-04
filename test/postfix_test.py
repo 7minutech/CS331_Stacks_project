@@ -1,6 +1,5 @@
 #run command python -m pytest
 from lib.postfix import Postfix
-import pytest
 def test_add_multiply_postfix_convert():
     my_postfix = Postfix
     assert my_postfix.convert_to_postfix("a + b * c") == "a b c * +"
