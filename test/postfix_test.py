@@ -4,16 +4,16 @@ def test_add_multiply_postfix_convert():
     my_postfix = Postfix("a + b * c")
     print(my_postfix.convert_to_postfix())
     assert my_postfix.convert_to_postfix() == "a b c * +"
-'''
+
 def test_add_sub_postfix_convert():
     my_postfix = Postfix("a - b + c")
     assert my_postfix.convert_to_postfix() == "a b - c +"
-'''
-'''
+
+
 def test_parenthesis_postfix_convert():
     my_postfix = Postfix("a ^ b ^ c")
     assert my_postfix.convert_to_postfix() == "a b c ^ ^"
-'''
+
 '''
 def test_add_multiply_postfix_evaluate():
     my_postfix = Postfix()
