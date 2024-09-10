@@ -16,7 +16,7 @@ class Postfix:
                         for i in range(len(operator_arr)- 1):
                             if self.OPERATORS[operator_arr[i]] > self.OPERATORS[operator_arr[i+1]]:
                                 sym_arr.append(operator_arr.pop())
-                            elif self.OPERATORS[operator_arr[i]] == self.OPERATORS[operator_arr[i+1]]:
+                            elif self.OPERATORS[operator_arr[i]] == self.OPERATORS[operator_arr[i+1]] and operator_arr[i] != "^":
                                 sym_arr.append(operator_arr[i])
                                 operator_arr.remove(operator_arr[i])
 
