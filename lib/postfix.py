@@ -21,6 +21,14 @@ class Postfix:
             return True
         else:
             return False
+    
+    def is_enclosed_by_parenthesis(index, arr):
+        if arr[index-1] == "(" and arr[index+1] == ")":
+            return True
+        else:
+            return False
+            
+
 
     def convert_to_postfix(expression):
         #"a + b * c" == "a b c * +"
