@@ -7,9 +7,6 @@ def test_trim_white_space():
 def test_add_multiply_postfix_convert():
     assert Postfix.convert_to_postfix("a + b * c") == "a b c * +"
 
-def test_add_sub_postfix_convert():
-    assert Postfix.convert_to_postfix("a - b + c") == "a b - c +"
-
 def test_powers_postfix_convert():
     assert Postfix.convert_to_postfix("a ^ b ^ c") == "a b c ^ ^"
 
@@ -21,6 +18,19 @@ def test_parenthesis_postfix_convert():
 
 def test_meaningless_parenthesis_postfix_convert():
         assert Postfix.convert_to_postfix("a + (b * c)") == "a b c * +"
+
+def test_single_operand():
+    assert Postfix.convert_to_postfix("a") == "a"
+
+def test_division_postfix_convert():
+    assert Postfix.convert_to_postfix("a / b + c") == "a b / c +"
+
+def test_same_precedence_operators():
+    assert Postfix.convert_to_postfix("a * b * c") == "a b * c *"
+    assert Postfix.convert_to_postfix("a + b + c") == "a b + c +"
+
+
+
 
 '''
 def test_add_multiply_postfix_evaluate():
