@@ -44,6 +44,8 @@ class Postfix:
         for char in expression:
             if char in Postfix.OPERATORS:
                 operator_arr.append(char)
+                if char == "(":
+                    set_of_parenthesis +=1
                 if len(operator_arr) > 1:
                     for i in range(len(operator_arr)- 1):
                         if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]):
