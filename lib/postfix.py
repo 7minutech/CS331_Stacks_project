@@ -4,6 +4,12 @@ class Postfix:
 
     def trim_white_space(expression):
         return expression.replace(" ","")
+    
+    def has_higher_precedence(a,b):
+        if Postfix.OPERATORS[a] > Postfix.OPERATORS[b]:
+            return True
+        else:
+            return False
 
     def convert_to_postfix(expression):
         #"a + b * c" == "a b c * +"
@@ -16,7 +22,7 @@ class Postfix:
                 operator_arr.append(char)
                 if len(operator_arr) > 1:
                     for i in range(len(operator_arr)- 1):
-                        if Postfix.OPERATORS[operator_arr[i]] > Postfix.OPERATORS[operator_arr[i+1]]:
+                        if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]):
                             sym_arr.append(operator_arr.pop())
                         elif Postfix.OPERATORS[operator_arr[i]] == Postfix.OPERATORS[operator_arr[i+1]] and operator_arr[i] != "^":
                             sym_arr.append(operator_arr[i])
@@ -29,6 +35,7 @@ class Postfix:
 
     def evaluate_to_postfix(self, expression = None):
         return None
+    
     
   
         
