@@ -30,8 +30,6 @@ def test_same_precedence_operators():
     assert Postfix.convert_to_postfix("a + b + c") == "a b + c +"
 
 
-
-
 '''
 def test_add_multiply_postfix_evaluate():
     my_postfix = Postfix()
