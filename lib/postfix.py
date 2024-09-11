@@ -1,6 +1,6 @@
 import pdb
 class Postfix:
-    OPERATORS = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
+    OPERATORS = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "(": 4, ")": 4}
 
     def trim_white_space(expression):
         return expression.replace(" ","")
