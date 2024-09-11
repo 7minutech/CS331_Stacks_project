@@ -34,13 +34,15 @@ class Postfix:
     def evaluate_to_postfix(expression = None):
         """Calculate value"""
         stk = []
-   
+        nmbrs = ""
         for element in expression:
-
+           
             if element.isdigit():
-
-                stk.append(int(element))
-            elif element != " ": 
+                nmbrs += element
+            elif element == " " and len(nmbrs) >= 1:
+                stk.append(int(nmbrs))
+                nmbrs = ""
+            elif element != " ":
                 two = stk.pop()
                 one = stk.pop()
                 result = 0
