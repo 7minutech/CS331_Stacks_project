@@ -17,7 +17,7 @@ def test_multiply_add_postfix_convert():
     assert Postfix.convert_to_postfix("a * b + c") == "a b * c +"
 
 def test_parenthesis_postfix_convert():
-        assert Postfix.convert_to_postfix("(a + b) * c") == "a b * c +"
+        assert Postfix.convert_to_postfix("(a + b) * c") == "a b + c *"
 
 '''
 def test_add_multiply_postfix_evaluate():
