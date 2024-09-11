@@ -2,10 +2,12 @@ import pdb
 class Postfix:
     OPERATORS = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
 
-    @staticmethod
+    def trim_white_space(expression):
+        return expression.replace(" ","")
+
     def convert_to_postfix(expression):
         #"a + b * c" == "a b c * +"
-        expression = expression.replace(" ","")
+        expression = Postfix.trim_white_space(expression)
         sym_arr = []
         operator_arr =[]
 
@@ -29,4 +31,6 @@ class Postfix:
     def evaluate_to_postfix(self, expression = None):
         return None
     
+  
+        
     
