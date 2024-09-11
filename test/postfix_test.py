@@ -1,5 +1,12 @@
 #run command python -m pytest
 from lib.postfix import Postfix
+
+def test_trim_white_space():
+    assert Postfix.trim_white_space("a + b * c") == "a+b*c"
+
+def test_add_multiply_postfix_convert():
+    assert Postfix.convert_to_postfix("a + b * c") == "a b c * +"
+
 def test_add_multiply_postfix_convert():
     assert Postfix.convert_to_postfix("a + b * c") == "a b c * +"
 
