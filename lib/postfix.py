@@ -34,7 +34,9 @@ class Postfix:
                 if len(operator_arr) > 1:
                     for i in range(len(operator_arr)- 1):
                         if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]):
-                            sym_arr.append(operator_arr.pop())
+                            sym_arr.append(operator_arr[i])
+                            operator_arr.remove(operator_arr[i])
+
                         elif Postfix.has_equal_precedence(operator_arr[i],operator_arr[i+1]) and not operator_arr[i] == "^":
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
