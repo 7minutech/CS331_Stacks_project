@@ -39,21 +39,10 @@ class Postfix:
         expression = Postfix.trim_white_space(expression)
         sym_arr = []
         operator_arr =[]
-        set_of_parenthesis = 0
-        left_parenthesis = 0
-        right_parenthesis = 0
 
         for char in expression:
             if char in Postfix.OPERATORS:
                 operator_arr.append(char)
-                if char == "(":
-                    left_parenthesis +=1
-                if char == ")":
-                    right_parenthesis +=1
-                if left_parenthesis and right_parenthesis > 0:
-                    set_of_parenthesis += 1
-                    left_parenthesis -= 1
-                    right_parenthesis -= 1
                 if len(operator_arr) > 1:
                     for i in range(len(operator_arr)- 1):
                         if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]) and not operator_arr[i] == "(" or operator_arr[i] == ")":
@@ -63,12 +52,11 @@ class Postfix:
                         elif Postfix.has_equal_precedence(operator_arr[i],operator_arr[i+1]) and not operator_arr[i] == "^":
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
-                        if set_of_parenthesis > 0 and Postfix.is_enclosed_by_parenthesis(i,operator_arr):
+                        if len(operator_arr) > 2 and Postfix.is_enclosed_by_parenthesis(i,operator_arr):
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i+1])
                             operator_arr.remove(operator_arr[i])
                             operator_arr.remove(operator_arr[i-1])
-                            set_of_parenthesis -= 1
                             
 
             else:
