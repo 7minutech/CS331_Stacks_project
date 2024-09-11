@@ -27,14 +27,19 @@ class Postfix:
             return True
         else:
             return False
-            
-
+        
+    def is_set_of_parenthesis(char):
+        if char == "(":
+            return True
+        else:
+            return False
 
     def convert_to_postfix(expression):
         #"a + b * c" == "a b c * +"
         expression = Postfix.trim_white_space(expression)
         sym_arr = []
         operator_arr =[]
+        set_of_parenthesis = 0
 
         for char in expression:
             if char in Postfix.OPERATORS:
