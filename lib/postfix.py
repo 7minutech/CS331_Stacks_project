@@ -2,7 +2,8 @@ import pdb
 class Postfix:
     OPERATORS = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
     def __init__(self,expression = None):
-        self.expression = expression.replace(" ","")
+       self.expression = expression.replace(" ","")
+    
 
     def convert_to_postfix(self, expression = None):
         #"a + b * c" == "a b c * +"
@@ -30,8 +31,32 @@ class Postfix:
             print("case 2")
         else:
             print("case 3")
-    def evaluate_to_postfix(self, expression = None):
-        return None
+    def evaluate_to_postfix(expression = None):
+        """Calculate value"""
+        stk = []
+   
+        for element in expression:
+
+            if element.isdigit():
+
+                stk.append(int(element))
+            elif element != " ": 
+                two = stk.pop()
+                one = stk.pop()
+                result = 0
+                if element == "-":
+                    result = one-two
+                elif element == "+":
+                    result = one+two
+                elif element == "/":
+                    result = one/two
+                elif element == "*":
+                    result = one*two
+                elif element == "^":
+                    result = pow(one,two)
+                stk.append(result)
+            
+        return stk[0]
     
     def set_expression(self, expression):
         self.expression = expression
