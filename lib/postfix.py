@@ -21,12 +21,11 @@ class Postfix:
                         elif Postfix.OPERATORS[operator_arr[i]] == Postfix.OPERATORS[operator_arr[i+1]] and operator_arr[i] != "^":
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
-
-                else:
-                    sym_arr.append(char)
-            for i in range(len(operator_arr)):
-                sym_arr.append(operator_arr.pop())
-            return " ".join(sym_arr)
+            else:
+                sym_arr.append(char)
+        for i in range(len(operator_arr)):
+            sym_arr.append(operator_arr.pop())
+        return " ".join(sym_arr)
 
     def evaluate_to_postfix(self, expression = None):
         return None
