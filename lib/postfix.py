@@ -77,10 +77,6 @@ class Postfix:
             sym_arr.append(operator_arr.pop())
         return " ".join(sym_arr)
 
-        elif expression is not None:
-            print("case 2")
-        else:
-            print("case 3")
     def evaluate_to_postfix(expression = None):
         """Calculate value"""
         stk = []
