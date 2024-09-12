@@ -14,10 +14,14 @@ def test_multiply_add_postfix_convert():
     assert Postfix.convert_to_postfix("a * b + c") == "a b * c +"
 
 def test_parenthesis_postfix_convert():
-
       assert Postfix.convert_to_postfix("(a + b) * c") == "a b + c *"
+
 def test_meaningless_parenthesis_postfix_convert():
         assert Postfix.convert_to_postfix("a + (b * c)") == "a b c * +"
+
+def test_nested_parenthesis_postfix_convert():
+    assert Postfix.convert_to_postfix("((a + b) * (c + d))") == "a b + c d + *"
+
 
 def test_single_operand():
     assert Postfix.convert_to_postfix("a") == "a"
