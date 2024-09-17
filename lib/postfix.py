@@ -16,13 +16,7 @@ class Postfix:
             return True
         else:
             return False
-    
-    def has_lower_precedence(a,b):
-        if Postfix.OPERATORS[a] < Postfix.OPERATORS[b]:
-            return True
-        else:
-            return False
-    
+      
     def is_enclosed_by_parenthesis(index, arr):
         if arr[index-1] == "(" and arr[index+1] == ")":
             return True
@@ -52,7 +46,6 @@ class Postfix:
                         if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] == 4:
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
-
                         elif Postfix.has_equal_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] >= 3:
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
@@ -60,7 +53,6 @@ class Postfix:
                             sym_arr.append(operator_arr[i])
                             for i in range(3):
                                 operator_arr.pop()
-                            
             else:
                 sym_arr.append(char)
         for i in range(len(operator_arr)):
