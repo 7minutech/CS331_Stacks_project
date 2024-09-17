@@ -49,7 +49,7 @@ class Postfix:
               
                 if len(operator_arr) > 1:
                     for i in range(len(operator_arr)- 1):
-                        if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]) and not operator_arr[i] == "(" or operator_arr[i] == ")":
+                        if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] == 4:
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
 
