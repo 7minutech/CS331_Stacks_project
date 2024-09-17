@@ -53,7 +53,7 @@ class Postfix:
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
 
-                        elif Postfix.has_equal_precedence(operator_arr[i],operator_arr[i+1]) and not (operator_arr[i] == "^" or Postfix.OPERATORS[operator_arr[i]] == 4):
+                        elif Postfix.has_equal_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] >= 3:
                             sym_arr.append(operator_arr[i])
                             operator_arr.remove(operator_arr[i])
                         if len(operator_arr) > 2 and Postfix.is_enclosed_by_parenthesis(i,operator_arr):
