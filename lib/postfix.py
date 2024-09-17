@@ -29,18 +29,34 @@ class Postfix:
         else:
             return False
 
+    def is_invalid_placement(a,b):
+        if (a in Postfix.OPERATORS and b in Postfix.OPERATORS):
+            if Postfix.OPERATORS[a] <= 3 or Postfix.OPERATORS[b] <= 3:
+                return True
+            else:
+                return False
+        elif (a not in Postfix.OPERATORS and b not in Postfix.OPERATORS):
+            return True
+        else:
+            return False
+        
     def convert_to_postfix(expression):
         #"a + b * c" == "a b c * +"
         expression = Postfix.trim_white_space(expression)
 
         sym_arr = []
-        operator_arr =[]
+        operator_arr = []
+        duo_arr = []
   
 
         for char in expression:
+            duo_arr.append(char)
+            if len(duo_arr) == 2:
+                if Postfix.is_invalid_placement(duo_arr[0],duo_arr[1]):
+                    return "Error: Invalid operator placement"
+                duo_arr.pop(0)
             if char in Postfix.OPERATORS:
                 operator_arr.append(char)
-              
                 if len(operator_arr) > 1:
                     for i in range(len(operator_arr)- 1):
                         if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] == 4:
@@ -56,7 +72,12 @@ class Postfix:
             else:
                 sym_arr.append(char)
         for i in range(len(operator_arr)):
-            sym_arr.append(operator_arr.pop())
+            operator = operator_arr.pop()
+            if Postfix.OPERATORS[operator] == 4:
+                return "Error: Mismatched parentheses"
+            sym_arr.append(operator)
+        if len(sym_arr) == 0:
+            return "Error: Empty expression"
         return " ".join(sym_arr)
 
     def evaluate_to_postfix(expression = None):
@@ -87,3 +108,5 @@ class Postfix:
                 stk.append(result)
             
         return stk[0]
+
+Postfix.convert_to_postfix("((a + b) * (c + d))")
