@@ -10,12 +10,6 @@ class Postfix:
             return True
         else:
             return False
-        
-    def has_equal_precedence(a,b):
-        if Postfix.OPERATORS[a] == Postfix.OPERATORS[b]:
-            return True
-        else:
-            return False
       
     def is_enclosed_by_parenthesis(index, arr):
         if arr[index-1] == "(" and arr[index+1] == ")":
@@ -23,12 +17,6 @@ class Postfix:
         else:
             return False
         
-    def is_set_of_parenthesis(char):
-        if char == "(":
-            return True
-        else:
-            return False
-
     def convert_to_postfix(infix_expression):
         #"a + b * c" == "a b c * +"
         infix_expression = Postfix.trim_white_space(infix_expression)
