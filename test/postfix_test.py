@@ -1,5 +1,5 @@
 #run command python -m pytest
-from lib.postfix import Postfix
+from  lib.postfix import Postfix
 
 def test_trim_white_space():
     '''Returns string with white space removed'''
