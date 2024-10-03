@@ -29,35 +29,38 @@ class Postfix:
         else:
             return False
 
-    def convert_to_postfix(expression):
+    def convert_to_postfix(infix_expression):
         #"a + b * c" == "a b c * +"
-        expression = Postfix.trim_white_space(expression)
-
-        sym_arr = []
-        operator_arr =[]
+        infix_expression = Postfix.trim_white_space(infix_expression)
+        postfix_expression = []
+        operators =[]
   
+        for term in infix_expression:
+            # need to add operands and operators to separate lists
+            if term in Postfix.OPERATORS:
+                operators.append(term)
 
-        for char in expression:
-            if char in Postfix.OPERATORS:
-                operator_arr.append(char)
-              
-                if len(operator_arr) > 1:
-                    for i in range(len(operator_arr)- 1):
-                        if Postfix.has_higher_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] == 4:
-                            sym_arr.append(operator_arr[i])
-                            operator_arr.remove(operator_arr[i])
-                        elif Postfix.has_equal_precedence(operator_arr[i],operator_arr[i+1]) and not Postfix.OPERATORS[operator_arr[i]] >= 3:
-                            sym_arr.append(operator_arr[i])
-                            operator_arr.remove(operator_arr[i])
-                        if len(operator_arr) > 2 and Postfix.is_enclosed_by_parenthesis(i,operator_arr):
-                            sym_arr.append(operator_arr[i])
+                if len(operators) > 1:
+                    for i in range(len(operators)- 1):
+                        # only need to add to expression once one operator has higher precedence than another
+                        # must exclude parenthesis
+                        if Postfix.has_higher_precedence(operators[i],operators[i+1]) and not Postfix.OPERATORS[operators[i]] == 4:
+                            postfix_expression.append(operators[i])
+                            operators.remove(operators[i])
+                        # need to check for parenthesis
+                        # b/c operators enclosed with have highest precedence
+                        if len(operators) > 2 and Postfix.is_enclosed_by_parenthesis(i,operators):
+                            postfix_expression.append(operators[i])
                             for i in range(3):
-                                operator_arr.pop()
+                                operators.pop()
+            # operands do not need to be checked 
+            # before they are added to the expression
             else:
-                sym_arr.append(char)
-        for i in range(len(operator_arr)):
-            sym_arr.append(operator_arr.pop())
-        return " ".join(sym_arr)
+                postfix_expression.append(term)
+        # any leftover operators can be added to the expression w/o checking
+        for i in range(len(operators)):
+            postfix_expression.append(operators.pop())
+        return " ".join(postfix_expression)
 
     def evaluate_to_postfix(expression = None):
         """Calculate value"""
