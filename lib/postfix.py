@@ -3,22 +3,25 @@ class Postfix:
     OPERATORS = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "(": 4, ")": 4}
 
     def trim_white_space(expression):
+        """Removes white space from infix expression"""
         return expression.replace(" ","")
     
     def has_higher_precedence(a,b):
+        """Checks if one operator has higher precedence than another"""
         if Postfix.OPERATORS[a] > Postfix.OPERATORS[b]:
             return True
         else:
             return False
       
     def is_enclosed_by_parenthesis(index, arr):
+        """Checks if an operator is enclosed in parenthesis"""
         if arr[index-1] == "(" and arr[index+1] == ")":
             return True
         else:
             return False
         
     def convert_to_postfix(infix_expression):
-        #"a + b * c" == "a b c * +"
+        """Converts a infix expression to postfix"""
         infix_expression = Postfix.trim_white_space(infix_expression)
         postfix_expression = []
         operators =[]
