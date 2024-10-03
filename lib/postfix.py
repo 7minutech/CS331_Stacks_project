@@ -63,6 +63,10 @@ class Postfix:
         """Calculate value"""
         stk = []
         nmbrs = ""
+        if not expression:
+            return 0
+        if len(expression) == 1 and expression[0].isdigit():
+            return int(expression)
         for element in expression:
            
             if element.isdigit():
